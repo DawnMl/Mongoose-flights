@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Merriweather', serif;
+}
+
+body {
+  background-color: lightgray;
+}
+
+/* Index page styling */
+.navbar {
+  background-color: #232931;
+}
+
+.container-fluid {
+  width: 97%;
+}
+.expired {
+  color: red;
+}
+
+.valid {
+  color: black;
+}
+
+.justify-content-center {
+  margin: 20px;
+}
+
+#flight-data-row {
+  margin: 1.1em 0;
+}
+
+.border-bottom {
+  border-bottom: 2px solid black;
+}
+
+h4 {
+  margin-top: 20px;
+}
+
+button:disabled {
+  color: black;
+}

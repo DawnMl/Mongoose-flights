@@ -1,0 +1,52 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <h4>Add New Ticket</h4>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-sm text-right">
+      The following tickets have already been created:
+    </div>
+    <div class="col-sm">
+      <select>
+        <% tickets.forEach(function(t) { %>
+          <option><%= t.seat %></option>
+        <% }) %>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm font-weight-bold text-right">
+      Seat
+    </div>
+    <div class="col-sm">
+      <form action="/flights/<%= flightId %>/tickets" method="POST">
+        <input name="seat" required pattern="[A-F][1-9]\d?" placeholder="A-F 10-99" autocomplete="off">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm font-weight-bold text-right">
+      Price
+    </div>
+    <div class="col-sm">
+      <input name="price" placeholder="$10 minimum">
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <button type="submit" class="btn btn-primary">CONFIRM</button>
+    </form>
+  </div>
+
+  <div class="row justify-content-center">
+      <form action="/flights/<%= flightId %>" method="GET">
+      <button type="submit" class="btn btn-primary">RETURN</button>
+      </form>
+  </div>
+
+</div>
+
+
+<%- include('../partials/footer') %>

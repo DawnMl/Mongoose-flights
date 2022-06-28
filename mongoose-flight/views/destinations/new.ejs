@@ -1,0 +1,61 @@
+<%- include('../partials/header') %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <h1>Flight List</h1>
+  </div>
+
+  <div class="row text-center border-bottom border-dark font-weight-bold">
+    <div class="col-sm">
+      Airline
+    </div>
+    <div class="col-sm">
+      Airport
+    </div>
+    <div class="col-sm">
+      Flight Number
+    </div>
+    <div class="col-sm">
+      Departure
+    </div>
+    <div class="col-sm"></div>
+    <div class="col-sm"></div>
+  </div>
+
+  <% if (flights.length) { %>
+    <% flights.forEach(function(f) { %>
+      <% if (f.departs < Date.now()) { %> 
+        <div class='expired'> 
+          <% } else { %>
+            <div class='valid'>
+              <% } %>
+              <div class="row text-center" id="flight-data-row">
+                <div class="col-sm">
+                  <%= f.airline %>
+                </div>
+                <div class="col-sm">
+                  <%= f.airport %>
+                </div>
+                <div class="col-sm">
+                  <%= f.flightNo %>
+                </div>
+                <div class="col-sm">
+                  <%= f.departs.toLocaleString(); %>
+                </div>
+                <div class="col-sm text-right">
+                  <a href="/flights/<%= f._id %>">DETAILS</a>
+                </div>
+                <div class="col-sm">
+                  <form action="/flights/<%= f.id %>?_method=DELETE" method="POST">
+                  <button type="submit" class="btn btn-warning">DELETE</button>
+                </form>
+                </div>
+              </div>
+            <% }); %>
+          </div>
+        <% } else { %>
+      h5>No flights have been added.</h5>
+    <% } %>
+  </div>
+
+  <%- include('../partials/footer') %>
